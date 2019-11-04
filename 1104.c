@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void swap(int a, int b)//void 不返回
+void swap(int a, int b)//void 不返回 *是个啥传值调用，不用它是没效果的
 {
     int t = a;
     a = b;

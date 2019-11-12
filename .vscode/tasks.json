@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 // 有关 tasks.json 格式的文档，请参见
     // https://go.microsoft.com/fwlink/?LinkId=733558
@@ -22,4 +23,30 @@
             "group": "build"
         }
     ]
+=======
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc-8 build active file",
+            "command": "/usr/bin/gcc-8",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+>>>>>>> be9b868b94dda100b8f009499d4b3e27b5f14da9
 }

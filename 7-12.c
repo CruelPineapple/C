@@ -39,7 +39,6 @@ int main()
         
     }
     
-    printf("%.1lf",num1);
-
+    printf("%.1lf\n",num1);
     return 0;
 }

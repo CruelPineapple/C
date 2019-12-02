@@ -15,7 +15,7 @@ int main()
 {
     student s;
 
-    scanf("%u%s %c",&s.sid,s.name,&s.gender);//name不用&因为字符串的名字就是个指针
+    scanf("%u%s %c",&s.sid,s.name,&s.gender);//name不用&因为字符串的名字就是个指针,防止%c吃掉空格 加一个
     printf("%u,%s,%c\n",s.sid,s.name,s.gender);
 
     return 0;

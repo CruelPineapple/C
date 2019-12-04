@@ -1,109 +1,141 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
 #define N 10
 
 int main()
 {
-    int i,j;
+    int i, j;
     char a[N][N];
 
-    for ( i = 0; i < N; ++i)
+    for (i = 0; i < N; ++i)
     {
-        for ( j = 0; i < N; ++j)
+        for (j = 0; j < N; ++j)
         {
-            a[i][j]='.';
+            a[i][j] = '.';
         }
-        
     }
 
-    a[0][0]='A';
-    
+    a[0][0] = 'A';
+
     srand((unsigned)time(NULL));
     int way;
 
-    i=0;
-    j=0;
+    i = 0;
+    j = 0;
 
-    for (int w = 0; w < 25; )
+    for (int w = 0; w < 25;)
     {
-        way=rand() % 4;
+        way = rand() % 4;
 
-        if (way==0)
+        if (i-1<0 && a[i+1][j] != '.' && a[i][j+1] != '.' && a[i][j-1] != '.')
         {
-            if (i-1<0 || a[i-1][j] !='.')
+            break;
+        }
+        if (i - 1 < 0 && a[i + 1][j] != '.' && a[i][j + 1] != '.' && j - 1 < 0)
+        {
+            break;
+        }
+        if (i - 1 < 0 && a[i + 1][j] != '.' && j + 1 < 0 && a[i][j - 1] != '.')
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && i + 1 > 9 && a[i][j + 1] != '.' && a[i][j - 1] != '.')
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && i + 1 > 9 && j + 1 > 9 && a[i][j - 1] != '.')
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && i + 1 > 9 && a[i][j + 1] != '.' && j - 1 < 0)
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && a[i + 1][j] != '.' && a[i][j + 1] != '.' && j - 1 < 0)
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && a[i + 1][j] != '.' && a[i][j + 1] != '.' && j + 1 > 9)
+        {
+            break;
+        }
+        if (a[i - 1][j] != '.' && a[i][j + 1] != '.' && a[i][j + 1] != '.' && a[i][j - 1] != '.')
+        {
+            break;
+        }
+
+        if (way == 0)
+        {
+            if (i - 1 < 0 || a[i - 1][j] != '.')
             {
-                continue;
+                // continue;
             }
-            else if(a[i-1][j] == '.')
+            else //if(a[i-1][j] == '.')
             {
-                a[i-1][j]='B' + w;
+                a[i - 1][j] = 'B' + w;
                 w++;
                 i--;
-                continue;
+                // continue;
             }
         }
 
-        if (way==1)
+        if (way == 1)
         {
-            if (i+1>9 || a[i+1][j] != '.')
+            if (i + 1 > 9 || a[i + 1][j] != '.')
             {
-                continue;
+                // continue;
             }
-            else if(a[i+1][j] == '.')
+            else //if(a[i+1][j] == '.')
             {
-                a[i+1][j]='B'+w;
+                a[i + 1][j] = 'B' + w;
                 w++;
                 i++;
-                continue;
+                // continue;
             }
-            
         }
-        
-        if (way==2)
+
+        if (way == 2)
         {
-            if (j-1<0 || a[i][j-1] != '.')
+            if (j - 1 < 0 || a[i][j - 1] != '.')
             {
-                continue;
+                // continue;
             }
-            else if(a[i][j-1] == '.')
+            else //if(a[i][j-1] == '.')
             {
-                a[i][j-1]='B'+w;
+                a[i][j - 1] = 'B' + w;
+                w++;
+                j--;
+                // continue;
+            }
+        }
+
+        if (way == 3)
+        {
+            if (j + 1 > 9 || a[i][j + 1] != '.')
+            {
+                // continue;
+            }
+            else //if(a[i][j+1] == '.')
+            {
+                a[i][j - 1] = 'B' + w;
                 w++;
                 j++;
-                continue;
+                // continue;
             }
-            
         }
-        
-        if (way==3)
-        {
-            if (j+1>9 || a[i][j+1] != '.')
-            {
-                continue;
-            }
-            else if(a[i][j+1] == '.')
-            {
-                a[i][j-1]='B'+w;
-                w++;
-                j++;
-                continue;
-            }
-            
-        }
-        
-        
     }
 
-    for ( i = 0; i < N; i++)
+    for (i = 0; i < N; i++)
     {
-        for ( j = 0; j < N; j++)
+        for (j = 0; j < N; j++)
         {
-            printf("%c",a[i][j]);
+            printf("%c", a[i][j]);
         }
         printf("\n");
     }
-    
+
     return 0;
 }
